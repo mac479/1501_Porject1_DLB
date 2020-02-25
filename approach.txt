@@ -1,0 +1,9 @@
+When designing the data structure to track a user's previous inputs I set it up so there is a second DLB trie
+alongside the standard dictionary one. This one is given priority for suggestions as it is populated soley with
+a user's past entries. When a word is either entered in full (terminated by entering '$') or picked from the list
+of suggestions the word is added to the user DLB trie. In addition the entered word gets added to a list, the list
+is just a collection of words that need to be added to the user_history.txt file. Because accessing and adding to a
+list are both O(1) the overall runtime of appending to the file is O(n) for each new word. It will not accept 
+dupelicate words it checks for dupelicates by using the add method the user DLB trie tries to preform in an if statement. 
+This method will return true if a new entry was created for the given string input, false if it already exists. This prevents
+dupelicates when saving to a file without the need to copy the entire user_history to the list as well for contains.
